@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="771.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="165.0" fitWidth="223.0" layoutX="103.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="username" layoutX="512.0" layoutY="134.0" promptText="请输入帐号">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <PasswordField fx:id="password" layoutX="512.0" layoutY="174.0" prefHeight="33.0" prefWidth="207.0" promptText="请输入密码">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="login" layoutX="512.0" layoutY="256.0" mnemonicParsing="false" text="登陆">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label layoutX="465.0" layoutY="140.0" text="帐号">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="465.0" layoutY="180.0" text="密码">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="459.0" layoutY="53.0" prefHeight="55.0" prefWidth="194.0" text="第七组图书馆">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="manage" layoutX="605.0" layoutY="222.0" mnemonicParsing="false" text="管理员">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="reader" layoutX="512.0" layoutY="222.0" mnemonicParsing="false" text="读者">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Label fx:id="tips" layoutX="432.0" layoutY="92.0" prefHeight="33.0" prefWidth="305.0" textFill="RED" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="383.0" layoutY="8.0" orientation="VERTICAL" prefHeight="424.0" prefWidth="12.0" />
+   </children>
+</Pane>

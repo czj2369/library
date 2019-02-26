@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="rootPane" maxHeight="520" maxWidth="800" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.userui.UserUIController">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="search" mnemonicParsing="false" onAction="#onSearch" text="图书查询" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="lend" mnemonicParsing="false" onAction="#onLend" text="图书借阅" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="readerInfo" mnemonicParsing="false" onAction="#onReaderInfo" text="个人信息" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="loss" mnemonicParsing="false" onAction="#onLoss" text="挂失" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button mnemonicParsing="false" onAction="#bookBook" text="预约图书" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="bookRecommend" mnemonicParsing="false" onAction="#onBookRecommend" text="图书荐购" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="finePay" mnemonicParsing="false" onAction="#onFinePay" text="缴纳罚款" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="userfreeBack" mnemonicParsing="false" onAction="#onUserfreeback" text="用户反馈" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="returnIndex" mnemonicParsing="false" onAction="#returnIndex" text="首页" />
+            <Separator orientation="VERTICAL" prefHeight="1.0" prefWidth="0.0" />
+            <Button fx:id="cancellation" mnemonicParsing="false" onAction="#cancellation" text="注销" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <Pane prefHeight="520.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <TitledPane fx:id="noticeUI" alignment="CENTER" prefHeight="123.0" prefWidth="289.0" text="公告">
+               <content>
+                  <Label fx:id="noticeLabel" alignment="TOP_LEFT" prefHeight="158.0" prefWidth="392.0" text="公告：" wrapText="true" />
+               </content>
+            </TitledPane>
+            <Label fx:id="logoText" layoutX="338.0" layoutY="249.0" opacity="0.5" prefHeight="28.0" prefWidth="275.0" text="欢迎使用图书馆管理系统">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoImg" fitHeight="150.0" fitWidth="200.0" layoutX="375.0" layoutY="96.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="bookSearchUI" prefHeight="480.0" prefWidth="950.0" visible="false">
+               <children>
+                  <TextField fx:id="searchContent" layoutX="177.0" layoutY="26.0" prefHeight="23.0" prefWidth="570.0" promptText="模糊查询输入图书关键字，如作者、出版社、类别" />
+                  <Button fx:id="searchBook" layoutX="762.0" layoutY="26.0" mnemonicParsing="false" onAction="#onSearchBook" prefHeight="23.0" prefWidth="55.0" text="搜索" />
+                  <TableView fx:id="searchTable" layoutX="8.0" layoutY="72.0" prefHeight="400.0" prefWidth="929.0">
+                    <columns>
+                        <TableColumn fx:id="bookNum" prefWidth="118.39999389648438" text="索书号" />
+                      <TableColumn fx:id="bookName" prefWidth="187.20004272460938" text="书名" />
+                      <TableColumn fx:id="bookAuthor" prefWidth="133.60003662109375" text="作者" />
+                        <TableColumn fx:id="bookPress" prefWidth="158.39996337890625" text="出版社" />
+                        <TableColumn fx:id="bookType" prefWidth="110.4000244140625" text="书类" />
+                        <TableColumn fx:id="bookPrice" prefWidth="76.0" text="价格" />
+                        <TableColumn fx:id="bookRest" prefWidth="68.0" text="库存量" />
+                        <TableColumn fx:id="bookSum" prefWidth="88.0" text="总量" />
+                    </columns>
+                  </TableView>
+                  <ChoiceBox fx:id="cb" layoutX="54.0" layoutY="26.0" prefHeight="23.0" prefWidth="111.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="finePayUI" prefHeight="480.0" prefWidth="950.0" visible="false">
+               <children>
+                  <Label layoutX="371.0" layoutY="3.0" prefHeight="64.0" prefWidth="187.0" text="罚款信息">
+                     <font>
+                        <Font size="40" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="finePayTable" layoutX="8.0" layoutY="72.0" prefHeight="400.0" prefWidth="929.0">
+                     <columns>
+                        <TableColumn fx:id="fineID" prefWidth="224.7999391555786" text="账号" />
+                        <TableColumn fx:id="fineReason" prefWidth="277.6000518798828" text="罚款原因" />
+                        <TableColumn fx:id="fineTime" minWidth="0.0" prefWidth="204.79998779296875" text="罚款时间" />
+                        <TableColumn fx:id="fineMoney" minWidth="0.0" prefWidth="221.79998779296875" text="缴纳罚款" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="userfreebackUI" prefHeight="480.0" prefWidth="950.0" visible="false">
+               <children>
+                  <Label layoutX="371.0" layoutY="3.0" prefHeight="64.0" prefWidth="187.0" text="用户反馈">
+                     <font>
+                        <Font size="40" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="sendContext" layoutX="20" layoutY="75.0" prefHeight="315.0" prefWidth="920.0" promptText="请提出您的意见" />
+                  <Button fx:id="send" layoutX="390.0" layoutY="426.0" mnemonicParsing="false" onAction="#onSend" prefHeight="47.0" prefWidth="130.0" text="提交" />
+               </children>
+            </Pane>
+            <Pane fx:id="bookRecommendUI" prefHeight="480.0" prefWidth="950.0" visible="false">
+               <children>
+                  <Label layoutX="371.0" layoutY="3.0" prefHeight="64.0" prefWidth="187.0" text="图书荐购">
+                     <font>
+                        <Font size="40" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10" layoutY="79.0" prefHeight="44.0" prefWidth="161.0" text="图书名称">
+                     <font>
+                        <Font size="30" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="bookRecommendName" layoutX="194" layoutY="79.0" prefHeight="44.0" prefWidth="700.0" />
+                  <Label layoutX="10" layoutY="124.0" prefHeight="44.0" prefWidth="161.0" text="图书作者">
+                     <font>
+                        <Font size="30" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="bookRecommendAuthor" layoutX="194" layoutY="130" prefHeight="44.0" prefWidth="700.0" />
+                  <Label layoutX="10" layoutY="174.0" prefHeight="44.0" prefWidth="175.0" text="图书出版社">
+                     <font>
+                        <Font size="30" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="bookRecommendPress" layoutX="194" layoutY="180" prefHeight="44.0" prefWidth="700.0" />
+                  <Label layoutX="10" layoutY="219.0" prefHeight="44.0" prefWidth="161.0" text="荐购理由">
+                     <font>
+                        <Font size="30" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="bookRecommendReason" layoutX="194.0" layoutY="229" prefHeight="175.0" prefWidth="700.0" wrapText="true" />
+                  <Button fx:id="bookRecommendsend" layoutX="390.0" layoutY="426.0" mnemonicParsing="false" onAction="#OnGitRecommened" prefHeight="47.0" prefWidth="130.0" text="提交" />
+               </children>
+            </Pane>
+            <TabPane fx:id="readerInfoUI" prefHeight="484.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE" visible="false">
+               <tabs>
+                  <Tab text="查看个人信息">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="420.0" layoutY="3.0" prefHeight="64.0" prefWidth="187.0" text="个人信息">
+                                 <font>
+                                    <Font size="40" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="314.0" layoutY="79.0" prefHeight="44.0" prefWidth="195.0" text="账号：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="userID" layoutX="420.0" layoutY="79.0" prefHeight="44.0" prefWidth="301.0">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="314.0" layoutY="130.0" prefHeight="44.0" prefWidth="195.0" text="姓名：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="userName" layoutX="420.0" layoutY="130.0" prefHeight="44.0" prefWidth="314.0">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="314.0" layoutY="180.0" prefHeight="44.0" prefWidth="195.0" text="性别：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="userSex" layoutX="420.0" layoutY="180.0" prefHeight="44.0" prefWidth="320.0">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="285.0" layoutY="230.0" prefHeight="44.0" prefWidth="134.0" text="手机号：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="userPhone" layoutX="420.0" layoutY="230.0" prefHeight="44.0" prefWidth="324.0">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="314.0" layoutY="280.0" prefHeight="44.0" prefWidth="105.0" text="邮箱：">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="userEmail" layoutX="422.0" layoutY="280.0" prefHeight="44.0" prefWidth="319.0">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="refresh" layoutX="431.0" layoutY="348.0" mnemonicParsing="false" onAction="#onRefresh" prefHeight="49.0" prefWidth="88.0" text="确定" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="修改个人信息">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="420.0" layoutY="3.0" prefHeight="64.0" prefWidth="187.0" text="信息修改">
+                                 <font>
+                                    <Font size="40" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="300" layoutY="80.0" prefHeight="44.0" prefWidth="161.0" text="姓名：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userName1" layoutX="394" layoutY="80.0" prefHeight="44.0" prefWidth="300.0" />
+                              <Label layoutX="300" layoutY="130.0" prefHeight="44.0" prefWidth="161.0" text="性别：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userSex1" layoutX="394" layoutY="130" prefHeight="44.0" prefWidth="300.0" />
+                              <Label layoutX="272.0" layoutY="180.0" prefHeight="44.0" prefWidth="161.0" text="手机号：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userPhone1" layoutX="394" layoutY="180" prefHeight="44.0" prefWidth="300.0" />
+                              <Label layoutX="300" layoutY="230.0" prefHeight="44.0" prefWidth="161.0" text="邮箱：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userEmail1" layoutX="394" layoutY="230" prefHeight="44.0" prefWidth="300.0" />
+                              <Label layoutX="241.0" layoutY="280.0" prefHeight="44.0" prefWidth="161.0" text="登陆密码：">
+                                 <font>
+                                    <Font size="30" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userPassword" layoutX="394" layoutY="280" prefHeight="44.0" prefWidth="300.0" />
+                              <Button fx:id="changeReaderInfo" layoutX="420.0" layoutY="350" mnemonicParsing="false" onAction="#onChangeReaderInfo" prefHeight="47.0" prefWidth="130.0" text="确定" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+            <TabPane fx:id="lendinfoUI" layoutY="1.0" prefHeight="483.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE" visible="false">
+               <tabs>
+                  <Tab text="图书借阅历史">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="878.0">
+                           <children>
+                              <Label layoutX="350.0" layoutY="3.0" prefHeight="64.0" prefWidth="300.0" text="图书借阅历史">
+                                 <font>
+                                    <Font size="40" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="lendedTable" layoutX="8.0" layoutY="76.0" prefHeight="373.0" prefWidth="943.0">
+                                 <columns>
+                                    <TableColumn fx:id="lendedbookNum" prefWidth="118.39999389648438" text="索书号" />
+                                    <TableColumn fx:id="lendedbookName" prefWidth="187.20004272460938" text="书名" />
+                                    <TableColumn fx:id="lendededbookAuthor1" prefWidth="133.60003662109375" text="作者" />
+                                    <TableColumn fx:id="lendedbookPress" prefWidth="158.39996337890625" text="出版社" />
+                                    <TableColumn fx:id="lendedbookType" prefWidth="110.4000244140625" text="书类" />
+                                    <TableColumn fx:id="lendedbookTime1" prefWidth="110.4000244140625" text="借书日期" />
+                                    <TableColumn fx:id="lendedbookTime2" prefWidth="110.4000244140625" text="还书日期" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="正在借阅图书">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="320.0" layoutY="3.0" prefHeight="64.0" prefWidth="300.0" text="正在借阅的图书">
+                                 <font>
+                                    <Font size="40" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="lendingTable" layoutX="8.0" layoutY="72.0" prefHeight="400.0" prefWidth="950.0">
+                                 <columns>
+                                    <TableColumn fx:id="lendbookNum" prefWidth="118.39999389648438" text="索书号" />
+                                    <TableColumn fx:id="lendbookName" prefWidth="187.20004272460938" text="书名" />
+                                    <TableColumn fx:id="lendedbookAuthor" prefWidth="133.60003662109375" text="作者" />
+                                    <TableColumn fx:id="lendbookPress" prefWidth="158.39996337890625" text="出版社" />
+                                    <TableColumn fx:id="lendbookType" prefWidth="110.4000244140625" text="书类" />
+                                    <TableColumn fx:id="lendbookTime1" prefWidth="110.4000244140625" text="借书日期" />
+                                    <TableColumn fx:id="lendbookTime2" prefWidth="110.4000244140625" text="还书日期" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="已预约图书">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="350.0" layoutY="3.0" prefHeight="64.0" prefWidth="300.0" text="已预约图书">
+                                 <font>
+                                    <Font size="40" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="bookedTable" layoutX="8.0" layoutY="72.0" prefHeight="400.0" prefWidth="950.0">
+                                 <columns>
+                                    <TableColumn fx:id="bookedbookNum" prefWidth="118.39999389648438" text="索书号" />
+                                    <TableColumn fx:id="bookedbookName" prefWidth="187.20004272460938" text="书名" />
+                                    <TableColumn fx:id="bookedbookAuthor" prefWidth="133.60003662109375" text="作者" />
+                                    <TableColumn fx:id="bookedbookPress" prefWidth="158.39996337890625" text="出版社" />
+                                    <TableColumn fx:id="bookedbookType" prefWidth="110.4000244140625" text="书类" />
+                                    <TableColumn fx:id="bookedbookTime" prefWidth="110.4000244140625" text="预约日期" />
+                                    <TableColumn fx:id="getbookTime" prefWidth="110.4000244140625" text="最迟取书日期" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+            <Pane fx:id="bookBookUI" prefHeight="480.0" prefWidth="950.0" visible="false">
+               <children>
+                  <TextField fx:id="bookBookid" layoutX="365.0" layoutY="50.0" prefHeight="23.0" prefWidth="251.0" />
+                  <Label layoutX="305.0" layoutY="54.0" text="索引号" />
+                  <Button layoutX="652.0" layoutY="50.0" mnemonicParsing="false" onAction="#bookbookinfo" text="确定" />
+                  <TableView fx:id="bookBookTable" layoutX="129.0" layoutY="83.0" prefHeight="175.0" prefWidth="724.0">
+                     <columns>
+                        <TableColumn fx:id="bookBookNum" prefWidth="353.6000213623047" text="索引号" />
+                        <TableColumn fx:id="bookBookName" minWidth="0.0" prefWidth="368.79998779296875" text="书名" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="410.0" layoutY="264.0" mnemonicParsing="false" onAction="#onbookbook" prefHeight="48.0" prefWidth="160.0" text="确定预约" />
+               </children>
+            </Pane>
+            <Pane fx:id="lossUI" prefHeight="480.0" prefWidth="950.0" visible="false">
+               <children>
+                  <TitledPane fx:id="losszt" alignment="CENTER" layoutX="331.0" layoutY="117.0" prefHeight="123.0" prefWidth="289.0" text="读者证状态">
+                     <content>
+                        <Label fx:id="userState" alignment="TOP_LEFT" prefHeight="73.0" prefWidth="116.0" textFill="#161617">
+                           <font>
+                              <Font name="Agency FB" size="57.0" />
+                           </font>
+                        </Label>
+                     </content>
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </TitledPane>
+                  <Button fx:id="lossButton" layoutX="420.0" layoutY="290.0" mnemonicParsing="false" onAction="#onGitLoss" prefHeight="60.0" prefWidth="110.0" text="挂失" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
